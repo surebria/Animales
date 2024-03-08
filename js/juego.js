@@ -1,3 +1,4 @@
+
 const arrayObjetos = [
     { animal: 'img/Animales/caballo.png', casa: 'img/casas/casa_caballo.png' },
     { animal: 'img/Animales/cerdo.png', casa: 'img/casas/casa_cerdo.png' },
@@ -24,8 +25,12 @@ const shuffleArray = (array) => {
 const arrayObjetosShuffled = shuffleArray(arrayObjetos);
 
 const primerosTres = arrayObjetosShuffled.slice(0, 3);
+console.log(primerosTres);
 
-asignarImagenesAnimales(primerosTres);
+window.onload = function (){
+
+    asignarImagenesAnimales(primerosTres);
+}
 
 //TODO 1. Añadir que en la segunda ejecución de la función iniciar, se añadan las siguientes tres casas a los lienzos
 //TODO 2. Añadir que en la tercera ejecución de la función iniciar, se añadan los siguientes tres animales a los section de img
@@ -37,10 +42,10 @@ const siguientesTres = arrayObjetosShuffled.slice(3, 6);
 
 
 
-function asignarImagenesAnimales(arrayObjetosShuffled) {
-    var imagenes = document.querySelectorAll('#container > section > img');
+function asignarImagenesAnimales(primerosTres) {
+    var imagenes = document.querySelectorAll('#containerAnimales > section > img');
     imagenes.forEach((imagen, index) => {
-        imagen.src = arrayObjetosShuffled[index].animal;
+        imagen.src = primerosTres[index].animal;
     });
 
 }
