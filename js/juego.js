@@ -1,13 +1,14 @@
 const arrayObjetos = [
-    { animal: 'Perro', casa: 'Casa 1' },
-    { animal: 'Gato', casa: 'Casa 2' },
-    { animal: 'Pájaro', casa: 'Casa 3' },
-    { animal: 'Elefante', casa: 'Casa 4' },
-    { animal: 'León', casa: 'Casa 5' },
-    { animal: 'Tigre', casa: 'Casa 6' },
-    { animal: 'Oso', casa: 'Casa 7' },
-    { animal: 'Cebra', casa: 'Casa 8' },
-    { animal: 'Jirafa', casa: 'Casa 9' }
+    { animal: 'caballo.png', casa: 'casa_caballo.png' },
+    { animal: 'cerdo.png', casa: 'casa_cerdo.png' },
+    { animal: 'conejo.png', casa: 'casa_conejo.png' },
+    { animal: 'gallina.png', casa: 'casa_gallina.png' },
+    { animal: 'pajaron.png', casa: 'casa_pajaro.png' },
+    { animal: 'pato.png', casa: 'casa_pato.png' },
+    { animal: 'perro.png', casa: 'casa_perro.png' },
+    { animal: 'pez.png', casa: 'casa_pez.png' },
+    { animal: 'rana.png', casa: 'casa_rana.png' },
+    { animal: 'vaca.png', casa: 'casa_vaca.png' }
 ];
 
 console.log(arrayObjetos);
@@ -19,3 +20,5 @@ const shuffleArray = (array) => {
     }
     return shuffledArray;
 };
+
+const arrayObjetosShuffled = shuffleArray(arrayObjetos);
