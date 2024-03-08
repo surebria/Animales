@@ -1,0 +1,62 @@
+@import url("../node_modules/animate.css/animate.css");
+@import url('//fonts.googleapis.com/css?family=Pacifico&text=Pure');
+@import url('//fonts.googleapis.com/css?family=Roboto:700&text=css');
+@import url('//fonts.googleapis.com/css?family=Kaushan+Script&text=!');
+
+p {
+    color: red;
+    font-size: 100px;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/casas/fondo.png");
+    background-size: 100% 100%; /* Ajusta la imagen al 100% de ancho y alto */
+    background-attachment: fixed;  
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/*Letra titulo*/
+.layer:after {
+  font: 150px/0.65 'Pacifico', 'Kaushan Script', Futura, 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
+  content: "La Granja";
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50px; 
+  letter-spacing: -2px;
+  text-shadow: 4px 0 10px hsla(0, 0%, 0%, .13);
+}
+
+.layer:nth-child(n+11):after {
+  /* -webkit-text-stroke: 3px hsla(0, 0%, 0%, .25); */
+}
+
+.layer:nth-child(n+12):after {
+  -webkit-text-stroke: 15px dodgerblue;
+  /* text-shadow: 6px 0 6px darken(dodgerblue,35%),
+               5px 5px 5px darken(dodgerblue,40%),
+               0 6px 6px darken(dodgerblue,35%); */
+}
+
+.layer:nth-child(n+13):after {
+  -webkit-text-stroke: 15px darken(dodgerblue, 10%);
+}
+
+.layer:last-child:after {
+  /* -webkit-text-stroke: 17px hsla(0, 0%, 0%, .1); */
+}
+
+.layer:first-child:after{
+  color: #fff;
+  /* text-shadow: none; */
+}
+
+
