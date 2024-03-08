@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1000px; /* Ajusta este valor para cambiar la separación entre los canvas y las imágenes */
+}
+
+#containerAnimales {
+    display: flex;
+    justify-content: space-between;
+}
+
+section {
+    flex: 1;
+}

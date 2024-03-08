@@ -27,6 +27,7 @@ const arrayObjetosShuffled = shuffleArray(arrayObjetos);
 const primerosTres = arrayObjetosShuffled.slice(0, 3);
 console.log(primerosTres);
 
+// Este windows.onload también se hará para las siguientes ejecuciones de la función iniciar
 window.onload = function (){
 
     asignarImagenesAnimales(primerosTres);
@@ -52,27 +53,26 @@ function asignarImagenesAnimales(primerosTres) {
 
 function iniciar() {
 
-    var fondos = primerosTres.slice(0, 3).map(objeto => objeto.casa);
+    var fondos = shuffleArray(primerosTres.slice(0, 3).map(objeto => objeto.casa));
 
     var lienzos = document.querySelectorAll('canvas');
     lienzos.forEach((soltar, index) => {
-        var lienzo = soltar.getContext('2d');
         var fondo = new Image();
         fondo.src = fondos[index];
         fondo.onload = () => {
             lienzo.drawImage(fondo, 0, 0, soltar.width, soltar.height);
         }
-
-        var imagenes = document.querySelectorAll('#container > section > img');
+        
+        var imagenes = document.querySelectorAll('#containerAnimales > section > img');
         for (var i = 0; i < imagenes.length; i++) {
             imagenes[i].addEventListener('dragstart', arrastrado, false);
             imagenes[i].addEventListener('dragend', finalizado, false);
         }
+        
+        var lienzo = soltar.getContext('2d');
         soltar.addEventListener('dragenter', eventoEnter, false);
         soltar.addEventListener('dragover', eventoOver, false);
-        soltar.addEventListener('drop', function(e) {
-            soltado(e, lienzo, soltar);
-        }, false);
+        soltar.addEventListener('drop', (e) => soltado(e, lienzo, soltar), false);
     });
 }
 
