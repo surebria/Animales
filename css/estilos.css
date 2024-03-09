@@ -1,62 +1,232 @@
 @import url("../node_modules/animate.css/animate.css");
-@import url('//fonts.googleapis.com/css?family=Pacifico&text=Pure');
-@import url('//fonts.googleapis.com/css?family=Roboto:700&text=css');
-@import url('//fonts.googleapis.com/css?family=Kaushan+Script&text=!');
+@import url("//fonts.googleapis.com/css?family=Pacifico&text=Pure");
+@import url("//fonts.googleapis.com/css?family=Roboto:700&text=css");
+@import url("//fonts.googleapis.com/css?family=Kaushan+Script&text=!");
 
 p {
-    color: red;
-    font-size: 100px;
-    text-align: center;
+  color: red;
+  font-size: 100px;
+  text-align: center;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-image: url("../img/casas/fondo.png");
-    background-size: 100% 100%; /* Ajusta la imagen al 100% de ancho y alto */
-    background-attachment: fixed;  
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-image: url("../img/casas/fondo.png");
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin:20px 0; */
+  text-align: center;
 }
-
 
 /*Letra titulo*/
-.layer:after {
-  font: 150px/0.65 'Pacifico', 'Kaushan Script', Futura, 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
-  content: "La Granja";
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 50px; 
-  letter-spacing: -2px;
-  text-shadow: 4px 0 10px hsla(0, 0%, 0%, .13);
+@import url(https://fonts.googleapis.com/css?family=Signika:700,300,600);
+
+h1 {
+  padding: 5px 60px 25px 60px;
+  font-size: 5em;
+  font: bold 7.5vw/1.6 "Signika", sans-serif;
+  user-select: none;
+  background-image: url("../img/casas/letrero.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
-.layer:nth-child(n+11):after {
-  /* -webkit-text-stroke: 3px hsla(0, 0%, 0%, .25); */
+h1 span {
+  display: inline-block;
+  animation: float 0.2s ease-in-out infinite;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: none;
+  }
+  33% {
+    transform: translateY(-1px) rotate(-2deg);
+  }
+  66% {
+    transform: translateY(1px) rotate(2deg);
+  }
+}
+body span {
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: rotateX(20deg) translateY(2px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(3deg) scale(1.1);
+  }
 }
 
-.layer:nth-child(n+12):after {
-  -webkit-text-stroke: 15px dodgerblue;
-  /* text-shadow: 6px 0 6px darken(dodgerblue,35%),
-               5px 5px 5px darken(dodgerblue,40%),
-               0 6px 6px darken(dodgerblue,35%); */
+span:nth-child(4n) {
+  color: hsl(49, 100%, 71%);
+  text-shadow: 1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%),
+    3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%);
+}
+span:nth-child(4n-1) {
+  color: hsl(245, 98%, 77%);
+  text-shadow: 1px 1px hsl(238, 35%, 40%), 2px 2px hsl(135, 35%, 45%),
+    3px 3px hsl(135, 35%, 45%), 4px 4px hsl(135, 35%, 45%);
+}
+span:nth-child(4n-2) {
+  color: hsl(0, 90%, 67%);
+  text-shadow: 1px 1px hsl(13, 25%, 50%), 2px 2px hsl(155, 25%, 50%),
+    3px 3px hsl(155, 25%, 50%), 4px 4px hsl(140, 25%, 50%);
+}
+span:nth-child(4n-3) {
+  color: hsl(38, 100%, 68%);
+  text-shadow: 1px 1px hsl(30, 45%, 50%), 2px 2px hsl(30, 45%, 50%),
+    3px 3px hsl(30, 45%, 50%), 4px 4px hsl(30, 45%, 50%);
 }
 
-.layer:nth-child(n+13):after {
-  -webkit-text-stroke: 15px darken(dodgerblue, 10%);
+h1 span:nth-child(2) {
+  animation-delay: 0.05s;
+}
+h1 span:nth-child(3) {
+  animation-delay: 0.1s;
+}
+h1 span:nth-child(4) {
+  animation-delay: 0.15s;
+}
+h1 span:nth-child(5) {
+  animation-delay: 0.2s;
+}
+h1 span:nth-child(6) {
+  animation-delay: 0.25s;
+}
+h1 span:nth-child(7) {
+  animation-delay: 0.3s;
+}
+h1 span:nth-child(8) {
+  animation-delay: 0.35s;
+}
+h1 span:nth-child(9) {
+  animation-delay: 0.4s;
+}
+h1 span:nth-child(10) {
+  animation-delay: 0.45s;
+}
+h1 span:nth-child(11) {
+  animation-delay: 0.5s;
+}
+h1 span:nth-child(12) {
+  animation-delay: 0.55s;
+}
+h1 span:nth-child(13) {
+  animation-delay: 0.6s;
+}
+h1 span:nth-child(14) {
+  animation-delay: 0.65s;
 }
 
-.layer:last-child:after {
-  /* -webkit-text-stroke: 17px hsla(0, 0%, 0%, .1); */
+/* Logo */
+
+.logo {
+  width: 200px;
+  height: 200px;
+  margin-top: -125px;
+}
+/* Botones */
+a {
+  text-decoration: none;
+  color: white;
+}
+.offset {
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
 }
 
-.layer:first-child:after{
+
+.offset:hover {
+  box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
+}
+
+
+.offset#jugar:hover {
+  box-shadow: 0 0 0 0 hsl(245, 98%, 77%), inset 6em 3.5em 0 0 hsl(245, 98%, 77%);
+}
+
+
+.offset {
+  --color: hsl(49, 100%, 71%);
+  --hover: hsl(0, 90%, 67%);
+}
+
+button {
+  color: var(--color);
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+button#salir:hover {
+  border-color: var(--hover);
   color: #fff;
-  /* text-shadow: none; */
+}
+button#jugar:hover {
+  background-color: hsl(245, 98%, 77%);
+  border-color: hsl(245, 98%, 77%);
 }
 
+body {
+  font: 300 20px "Bold", sans-serif;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  text-align: center;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: flex;
+}
 
+button {
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  margin-top: 2em;
+  padding: 1em 2em;
+  font-size: 23px;
+}
+
+/* Boton sonido */
+button#botonSonido {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: hsl(245, 98%, 77%);
+  color: hsl(49, 100%, 71%);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Boton info */
+button#botoninfo {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsl(245, 98%, 77%);
+  color: hsl(49, 100%, 71%);
+  border: none;
+  padding: 10px 20px;
+  font-size: 2em;
+  border-radius: 5px;
+}

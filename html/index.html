@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La granja</title>
-
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../node_modules/animate.css/animate.css">
+    <link rel="shortcut icon" href="../img/casas/logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/d4b8af33ac.js" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-    <div class="stage">
-        <div class="layer"></div>
+    <audio autoplay loop id="miAudio">
+        <source src="../audio/musica_fondo.mp3" type="audio/mp3">
+    </audio>
+    <h1>
+        <span>¡</span><span>L</span><span>A</span>
+        <span>G</span><span>R</span><span>A</span><span>N</span><span>J</span><span>A</span><span>!</span>
+    </h1>
+    <img src="../img/casas/logo.png" alt="" class="logo">
+    <audio id="sonidoBoton" src="../audio/sonido_botones.mp3"></audio>
+
+    <div class="buttons">
+        <button class="offset" id="jugar"><a href="#">JUGAR</a></button>
+        <button class="offset" id="salir"><a href="#">SALIR</a></button>
     </div>
+    <script src="script.js"></script>
+
+    <button id="botonSonido" onclick="toggleSonido()"><i class="fa-solid fa-volume-high"></i></button>   
+
+    <button id="botoninfo" onclick="toggleSonido()"><i class="fa-solid fa-circle-info"></i></button>   
+
+
+    <script src="../js/logica.js"> </script>
+
 </body>
+
 </html>
