@@ -53,9 +53,8 @@ function asignarImagenesAnimales(primerosTres) { //TODO Modificar aquí cuando s
 
 function iniciar() {
 
-    var fondos = shuffleArray(primerosTres.slice(0, 3).map(objeto => objeto.casa)); //TODO También modificar aquí en segunda ejecución
-    
-    // console.log(fondos);
+    var fondos = shuffleArray(primerosTres.map(objeto => objeto.casa)); //TODO También modificar aquí en segunda ejecución
+
     var lienzos = document.querySelectorAll('canvas');  
     lienzos.forEach((soltar, index) => {
         // console.log(soltar);
