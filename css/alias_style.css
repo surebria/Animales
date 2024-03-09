@@ -1,21 +1,42 @@
 body{
-    background-image: url("../img/casas/alias_granja.jpeg"); 
+    background-image: url("../img/casas/alias_granja.png"); 
     background-size: cover;
-    
-        font-family: 'Madimi One', cursive;
-    
-    
+    font-family: 'Madimi One', cursive;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    text-align: center;
+}
+
+h1{
+        font-size: 40px;
+        margin: 30px;
+}
+
+.main-a-container{
+        background-color: rgba(222, 173, 132, 0.927);
+        color: rgba(31, 15, 2, 0.927);
+        /* background-color: rgba(195, 158, 89, 0.927); */
+}
+
+#alias{
+        padding: 0px 5px;
+        width: 300px;
+        height: 40px;
+        font-size: 20px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 input[type="button"] {
+        font-size: larger;
         border: 1px solid #2e518b; /*anchura, estilo y color borde*/
-        padding: 10px; /*espacio alrededor texto*/
+        padding: 15px; /*espacio alrededor texto*/
         background-color: #7d8b2e; /*color botón*/
         color: #ffffff; /*color texto*/
         text-decoration: none; /*decoración texto*/
         text-transform: uppercase; /*capitalización texto*/
         font-family: 'Helvetica', sans-serif; /*tipografía texto*/
-        border-radius: 50px; /*bordes redondos*/
-        
+        border-radius: 50px; /*bordes redondos*/    
+        margin-bottom: 30px;
 }
 
