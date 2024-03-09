@@ -3,7 +3,9 @@ body{
     background-size: cover;
     font-family: 'Madimi One', cursive;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 10%;
     text-align: center;
 }
@@ -17,6 +19,16 @@ h1{
         background-color: rgba(222, 173, 132, 0.927);
         color: rgba(31, 15, 2, 0.927);
         /* background-color: rgba(195, 158, 89, 0.927); */
+}
+
+table, td, th, tr{
+    font-size: 23px;
+    /* background-color: rgba(241, 200, 167, 0.715); */
+    background-color: #c2cb8c; /*color botón*/
+    padding: 15px;
+    border: 1px solid rgb(3, 1, 1);
+    border-collapse: collapse;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #alias{
