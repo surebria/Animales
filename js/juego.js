@@ -25,22 +25,27 @@ const shuffleArray = (array) => {
 const arrayObjetosShuffled = shuffleArray(arrayObjetos);
 
 const primerosTres = arrayObjetosShuffled.slice(0, 3);
+const siguientesTres = arrayObjetosShuffled.slice(3, 6);
+
+var animalesMostrados = () => {
+
+    //TODO Aquí va a estar una conexión con el localStorage para saber en qué nivel se encuentra el jugador
+    //niveleEjecutados = localStorage.getItem('nivelesEjecutado');
+    return nivelEjecutado === 1 ? primerosTres : siguientesTres;
+};
 
 // Este windows.onload también se hará para las siguientes ejecuciones de la función iniciar
 window.onload = function (){
 
+    //asignarImagenesAnimales(animalesMostrados);
     asignarImagenesAnimales(primerosTres);
 }
 //Idea: Agregar un contador para saber cuántas veces ha finalizado el juego exitosamente, que se guarde en el localStorage
 //TODO 1. Añadir que en la segunda ejecución de la función iniciar, se añadan las siguientes tres casas a los lienzos
 //TODO 2. Añadir que en la segunda ejecución de la función iniciar, se añadan los siguientes tres animales a los section de img
 
-
-const siguientesTres = arrayObjetosShuffled.slice(3, 6);
-
-
-
-
+//TODO Descomentar todo esto cuando la conexión a localStorage esté lista
+//function asignarImagenesAnimales(animalesMostrados)
 function asignarImagenesAnimales(primerosTres) { //TODO Modificar aquí cuando sea la segunda ejecución
     var imagenes = document.querySelectorAll('#containerAnimales > section > img');
     
@@ -60,6 +65,7 @@ function iniciar() {
             sonido: objeto.sonido
         };
     })); //TODO También modificar aquí en segunda ejecución
+    //shuffleArray(animalesMostrados / / / )
 
     // console.log(fondos);
 
@@ -89,10 +95,6 @@ function iniciar() {
         soltar.addEventListener('dragover', eventoOver, false);
         
         soltar.addEventListener('drop', (e) => soltado(e, lienzo, soltar), false);
-        //TODO 3. Añadir verificación de si el animal se arrastra sobre su casa correcta o no
-        //Si es correcta, se añade al lienzo y se coloca su propiedad draggable a false y visibility a hidden, se añaden puntos
-        /*Si no es correcta, se llama al sonido de que es incorrecta, se coloca su propiedad draggable a true y se vuelve a mostrar,
-        se quitan puntos  y se regresa a la posición original */
     });
 }
 
@@ -141,6 +143,7 @@ function soltado(e, lienzo, soltar) {
         // El animal no se arrastró a la casa correcta
         elemento.style.position = 'initial'; // Regresar a la posición original
         puntaje -= Math.floor(Math.random() * 201) + 100;
+        //TODO Llamar al sonido de que es incorrecta
 
     }
 }
