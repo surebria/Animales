@@ -54,7 +54,7 @@ function asignarImagenesAnimales(primerosTres) { //TODO Modificar aquí cuando s
 function iniciar() {
 
     // console.log(primerosTres);
-    var fondos = shuffleArray(primerosTres.map(objeto => {
+    var fondosSonidos = shuffleArray(primerosTres.map(objeto => {
         return {
             casa: objeto.casa,
             sonido: objeto.sonido
@@ -68,10 +68,10 @@ function iniciar() {
         // console.log(soltar);
         var fondo = new Image();
 
-        fondo.src = fondos[index].casa;
+        fondo.src = fondosSonidos[index].casa;
         // console.log(fondo.src);
-        soltar.dataset.casa = fondos[index].casa; // Asignar el nombre de la casa al atributo de datos
-        soltar.dataset.sonido = fondos[index].sonido;
+        soltar.dataset.casa = fondosSonidos[index].casa; // Asignar el nombre de la casa al atributo de datos
+        soltar.dataset.sonido = fondosSonidos[index].sonido;
 
 
         fondo.onload = () => {
