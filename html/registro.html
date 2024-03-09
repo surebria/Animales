@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/alias_style.css">
+    
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="registro-container">
+            <h1>Ingresa tu nombre <br> para jugar</h1>
+            <label for="alias"></label>
+            <input type="text" id="alias"/>
+            <BR></BR>
+            <input type="button" onclick="guardarDatos()" value="Jugar" > 
+        </div>
+    </div>
+    
+    <script>
+        function guardarDatos() {
+           // Obtén el valor del input
+           var nuevoAlias = document.getElementById("alias").value;
+            
+            // Genera un identificador único para esta lista de alias
+            var idLista = Date.now().toString(); 
+            
+            // Verifica si hay datos guardados previamente en localStorage
+            var aliases = localStorage.getItem(idLista);
+            
+            // Si no hay datos previos, inicializa un array vacío
+            if (!aliases) {
+                aliases = [];
+            } else {
+                // Si hay datos previos, convierte la cadena JSON almacenada en un array
+                aliases = JSON.parse(aliases);
+            }
+            
+            // Agrega el nuevo alias al array
+            aliases.push(nuevoAlias);
+            
+            // Guarda el array actualizado en localStorage con el identificador único
+            localStorage.setItem(idLista, JSON.stringify(aliases));
+        }
+    </script>
+</body>
+</html>

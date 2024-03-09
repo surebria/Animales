@@ -1,0 +1,21 @@
+body{
+    background-image: url("../img/casas/alias_granja.jpeg"); 
+    background-size: cover;
+    
+        font-family: 'Madimi One', cursive;
+    
+    
+}
+
+input[type="button"] {
+        border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+        padding: 10px; /*espacio alrededor texto*/
+        background-color: #7d8b2e; /*color botón*/
+        color: #ffffff; /*color texto*/
+        text-decoration: none; /*decoración texto*/
+        text-transform: uppercase; /*capitalización texto*/
+        font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+        border-radius: 50px; /*bordes redondos*/
+        
+}
+
