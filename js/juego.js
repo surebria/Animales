@@ -1,6 +1,6 @@
 
 const arrayObjetos = [
-    { animal: 'img/Animales/caballo.png', casa: 'img/casas/casa_caballo.png' },
+    { animal: 'img/Animales/caballo.png', casa: 'img/casas/casa_caballo.png' , sonido: "../audio/caballo.mp3"},
     { animal: 'img/Animales/cerdo.png', casa: 'img/casas/casa_cerdo.png' },
     { animal: 'img/Animales/conejo.png', casa: 'img/casas/casa_conejo.png' },
     { animal: 'img/Animales/gallina.png', casa: 'img/casas/casa_gallina.png' },
