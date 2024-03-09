@@ -1,6 +1,6 @@
 
 const arrayObjetos = [
-    { animal: 'img/Animales/caballo.png', casa: 'img/casas/casa_caballo.png' },
+    { animal: 'img/Animales/caballo.png', casa: 'img/casas/casa_caballo.png' , sonido: "../audio/caballo.mp3"},
     { animal: 'img/Animales/cerdo.png', casa: 'img/casas/casa_cerdo.png' },
     { animal: 'img/Animales/conejo.png', casa: 'img/casas/casa_conejo.png' },
     { animal: 'img/Animales/gallina.png', casa: 'img/casas/casa_gallina.png' },
@@ -25,16 +25,15 @@ const shuffleArray = (array) => {
 const arrayObjetosShuffled = shuffleArray(arrayObjetos);
 
 const primerosTres = arrayObjetosShuffled.slice(0, 3);
-console.log(primerosTres);
 
 // Este windows.onload también se hará para las siguientes ejecuciones de la función iniciar
 window.onload = function (){
 
     asignarImagenesAnimales(primerosTres);
 }
-
+//Idea: Agregar un contador para saber cuántas veces ha finalizado el juego exitosamente, que se guarde en el localStorage
 //TODO 1. Añadir que en la segunda ejecución de la función iniciar, se añadan las siguientes tres casas a los lienzos
-//TODO 2. Añadir que en la tercera ejecución de la función iniciar, se añadan los siguientes tres animales a los section de img
+//TODO 2. Añadir que en la segunda ejecución de la función iniciar, se añadan los siguientes tres animales a los section de img
 //Puede ser con un if, que que si el array de imagenes tiene 3 elementos, se añadan las siguientes tres casas
 
 
@@ -43,22 +42,30 @@ const siguientesTres = arrayObjetosShuffled.slice(3, 6);
 
 
 
-function asignarImagenesAnimales(primerosTres) {
+function asignarImagenesAnimales(primerosTres) { //TODO Modificar aquí cuando sea la segunda ejecución
     var imagenes = document.querySelectorAll('#containerAnimales > section > img');
+    
     imagenes.forEach((imagen, index) => {
         imagen.src = primerosTres[index].animal;
+        imagen.dataset.casa = primerosTres[index].casa; // Asignar el nombre de la casa al atributo de datos
     });
-
 }
 
 function iniciar() {
 
-    var fondos = shuffleArray(primerosTres.slice(0, 3).map(objeto => objeto.casa));
-
-    var lienzos = document.querySelectorAll('canvas');
+    var fondos = shuffleArray(primerosTres.slice(0, 3).map(objeto => objeto.casa)); //TODO También modificar aquí en segunda ejecución
+    
+    // console.log(fondos);
+    var lienzos = document.querySelectorAll('canvas');  
     lienzos.forEach((soltar, index) => {
+        // console.log(soltar);
         var fondo = new Image();
+
         fondo.src = fondos[index];
+        // console.log(fondo.src);
+        soltar.dataset.casa = fondos[index]; // Asignar el nombre de la casa al atributo de datos
+
+
         fondo.onload = () => {
             lienzo.drawImage(fondo, 0, 0, soltar.width, soltar.height);
         }
@@ -72,7 +79,12 @@ function iniciar() {
         var lienzo = soltar.getContext('2d');
         soltar.addEventListener('dragenter', eventoEnter, false);
         soltar.addEventListener('dragover', eventoOver, false);
+        
         soltar.addEventListener('drop', (e) => soltado(e, lienzo, soltar), false);
+        //TODO 3. Añadir verificación de si el animal se arrastra sobre su casa correcta o no
+        //Si es correcta, se añade al lienzo y se coloca su propiedad draggable a false y visibility a hidden, se añaden puntos
+        /*Si no es correcta, se llama al sonido de que es incorrecta, se coloca su propiedad draggable a true y se vuelve a mostrar,
+        se quitan puntos  y se regresa a la posición original */
     });
 }
 
@@ -88,7 +100,7 @@ function eventoOver(e) {
 
 function finalizado(e) {
     elemento = e.target;
-    elemento.style.visibility = 'hidden';
+    // elemento.style.visibility = 'hidden';
 }
 
 function arrastrado(e) {
@@ -103,7 +115,17 @@ function soltado(e, lienzo, soltar) {
     var elemento = document.getElementById(id);
     var posX = e.pageX - soltar.offsetLeft;
     var posY = e.pageY - soltar.offsetTop;
-    lienzo.drawImage(elemento, posX, posY);
+    var casaAnimal = elemento.dataset.casa;
+    var casaCanvas = soltar.dataset.casa;
+    if (casaAnimal === casaCanvas) {
+        // El animal se arrastró a la casa correcta
+        lienzo.drawImage(elemento, posX, posY);
+        elemento.draggable = false;
+        elemento.style.visibility = 'hidden';
+    } else {
+        // El animal no se arrastró a la casa correcta
+        elemento.style.position = 'initial'; // Regresar a la posición original
+    }
 }
 
 window.addEventListener('load', iniciar, false);

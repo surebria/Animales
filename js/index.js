@@ -1,14 +1,19 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
+
+  var miAudio = document.getElementById("miAudio");
+  var botonSonido = document.getElementById("botonSonido");
+  var sonidoBoton = document.getElementById("sonidoBoton");
+  var botonSalir = document.getElementById("salir");
+
   document.querySelectorAll("button").forEach(function (button) {
     button.addEventListener("click", function () {
-      var sonidoBoton = document.getElementById("sonidoBoton");
       sonidoBoton.play();
     });
   });
 
   function toggleSonido() {
-    var miAudio = document.getElementById("miAudio");
-    var botonSonido = document.getElementById("botonSonido");
     if (miAudio.paused) {
       miAudio.play();
       botonSonido.innerHTML = "<i class='fa-solid fa-volume-high'></i>";
@@ -21,4 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   botonSonido.addEventListener("click", toggleSonido);
+
+  botonSalir.addEventListener("click", () => {
+    window.close();
+  });
+
 });
