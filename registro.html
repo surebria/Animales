@@ -26,30 +26,45 @@
 
     <script>
         function guardarDatos() {
-            // Obtén el valor del input
-            var nuevoAlias = document.getElementById("alias").value;
-
-            // Genera un identificador único para esta lista de alias
-            var idLista = Date.now().toString();
-
+            // Limpia los datos guardados en sessionStorage
+            // Por si llegase a jugar otro usuario
+            sessionStorage.clear();
+            // Se genera un nuevo objeto llamado "jugador" con los datos ingresados por el usuario
+            var jugador = {
+                usuario: document.getElementById("alias").value,
+                puntaje: 0,
+                puntajeMax: 0,
+                progreso: 0
+            };
             // Verifica si hay datos guardados previamente en localStorage
-            var aliases = localStorage.getItem(idLista);
-
-            // Si no hay datos previos, inicializa un array vacío
-            if (!aliases) {
-                aliases = [];
+            var usuarios = localStorage.getItem("usuarios");
+            // Si hay datos, los convierte en un array
+            if (usuarios) {
+                usuarios = JSON.parse(usuarios);
+                usuarios.forEach(element => {
+                    sessionStorage.setItem("jugador", jugador.usuario);
+                    // Si el usuario ya existe, lo redirige al juego
+                    if(element.usuario == jugador.usuario){
+                        window.location.href = "juego.html";
+                    }else{
+                        // Si no existe, lo agrega al array
+                        usuarios.push(jugador);
+                        // Guarda el array actualizado en localStorage
+                        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+                    }
+                });
             } else {
-                // Si hay datos previos, convierte la cadena JSON almacenada en un array
-                aliases = JSON.parse(aliases);
+                // Si no hay datos, crea un array vacío
+                usuarios = [];
+    
+                // Agrega el nuevo alias al array
+                usuarios.push(jugador);
+                // Guarda el array actualizado en localStorage con el identificador único
+                localStorage.setItem("usuarios", JSON.stringify(usuarios));
+                sessionStorage.setItem("jugador", jugador.usuario);
             }
-
-            // Agrega el nuevo alias al array
-            aliases.push(nuevoAlias);
-
-            // Guarda el array actualizado en localStorage con el identificador único
-            localStorage.setItem(idLista, JSON.stringify(aliases));
-
             window.location.href = "juego.html";
+
         }
     </script>
 </body>
