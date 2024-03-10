@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var miAudio = document.getElementById("miAudio");
   var botonSonido = document.getElementById("botonSonido");
-  var sonidoBoton = document.getElementById("sonidoBoton");
   var botonSalir = document.getElementById("salir");
-
+  
   document.querySelectorAll("button").forEach(function (button) {
+    var sonidoBoton = document.getElementById("sonidoBoton");
     button.addEventListener("click", function () {
       sonidoBoton.play();
     });

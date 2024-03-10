@@ -30,6 +30,14 @@ function toggleSonido() {
         botonSonido.style.backgroundColor = "hsl(0, 90%, 67%)";
     }
 }
+
+
 botonSonido.addEventListener("click", toggleSonido);
 
+document.querySelectorAll("button").forEach(function (button) {
+    var sonidoBoton = document.getElementById("sonidoBoton");
+    button.addEventListener("click", function () {
+        sonidoBoton.play();
+    });
+});
 

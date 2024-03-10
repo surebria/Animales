@@ -13,10 +13,7 @@
 </head>
 
 <body>
-    <audio id="sonidoBoton" src="audio/sonido_botones.mp3"></audio>
-    <audio autoplay loop id="miAudio">
-        <source src="audio/musica_fondo.mp3" type="audio/mp3">
-    </audio>
+
     <h1>
         <span>¡</span><span>L</span><span>A</span>
         <span>G</span><span>R</span><span>A</span><span>N</span><span>J</span><span>A</span><span>!</span>
@@ -33,6 +30,12 @@
 
     <button id="botoninfo"><i class="fa-solid fa-circle-info"></i></button>
 
+
+    <audio id="sonidoBoton" src="audio/sonido_botones.mp3"></audio>
+    <audio autoplay loop id="miAudio">
+        <source src="audio/musica_fondo.mp3" type="audio/mp3">
+    </audio>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var botonInfo = document.getElementById("botoninfo");
@@ -42,7 +45,6 @@
             });
         });
     </script>
-    
     <script src="js/index.js"> </script>
 
 </body>

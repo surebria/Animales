@@ -151,7 +151,7 @@ function soltado(e, lienzo, canvas) {
         lienzo.lineWidth = 5;
         lienzo.strokeText(nombreAnimal, 80, 140);
         lienzo.fillText(nombreAnimal, 80, 140); // Añade el texto en blanco
-        
+
 
         elemento.remove();
         // Se dibuja en el lienzo y se oculta del origen
@@ -161,11 +161,13 @@ function soltado(e, lienzo, canvas) {
         var audio = new Audio(sonidoNombre);
         audio.play();
         // Se ejecuta el audio indicando que es el animal correcto
-        sleep(2000);
+        sleep(3000).then(() => {
+            audio = new Audio(canvas.dataset.sonido);
+            audio.play();
+        });
 
-        audio = new Audio(canvas.dataset.sonido);
-        audio.play();
-         // Si no tiene hijos el container significa que arrastro todos los que debía
+
+        // Si no tiene hijos el container significa que arrastro todos los que debía
         if (document.getElementById('containerAnimales').children.length === 0) {
             console.log('ya no hay hijos');
             if (player.progreso !== 1) {
@@ -185,6 +187,7 @@ function soltado(e, lienzo, canvas) {
                         }
                     }
                 });
+                localStorage.removeItem('usuarios');
                 localStorage.setItem('usuarios', JSON.stringify(usersLocal));
                 sleep(2000).then(() => {
                     iniciar();
@@ -210,8 +213,27 @@ function soltado(e, lienzo, canvas) {
                             xhr.onreadystatechange = function () {
                                 if (xhr.readyState === 4 && xhr.status === 200) {
                                     // Se guarda el puntaje y el tiempo para mandarlos a la base de datos
+                                    localStorage.removeItem('usuarios');
                                     localStorage.setItem('usuarios', JSON.stringify(usersLocal));
                                     console.log('Puntaje subido a la base de datos');
+                                    sleep(2000).then(() => {
+                                        clearInterval(timerInterval);
+                                        window.location.href = "fin.html";
+                                        // Despues de 2 segundos se llama a fin
+                                    });
+                                }else if(xhr.readyState === 4 && xhr.status === 500){
+                                    console.log('Error en el servidor');
+                                    localStorage.removeItem('usuarios');
+                                    localStorage.setItem('usuarios', JSON.stringify(usersLocal));
+                                    sleep(2000).then(() => {
+                                        clearInterval(timerInterval);
+                                        window.location.href = "fin.html";
+                                        // Despues de 2 segundos se llama a fin
+                                    });
+                                }else if(xhr.readyState === 4 && xhr.status === 404){
+                                    console.log('Error en la ruta');
+                                    localStorage.removeItem('usuarios');
+                                    localStorage.setItem('usuarios', JSON.stringify(usersLocal));
                                     sleep(2000).then(() => {
                                         clearInterval(timerInterval);
                                         window.location.href = "fin.html";
@@ -279,6 +301,13 @@ window.onload = function () {
             botonSonido.innerHTML = "<i class='fa-solid fa-volume-xmark'></i>";
             botonSonido.style.backgroundColor = "hsl(0, 90%, 67%)";
         }
+    });
+
+    document.querySelectorAll("button").forEach(function (button) {
+        var sonidoBoton = document.getElementById("sonidoBoton");
+        button.addEventListener("click", function () {
+            sonidoBoton.play();
+        });
     });
 
     document.getElementById("botonFin").addEventListener('click', () => {

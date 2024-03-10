@@ -59,7 +59,7 @@
                 usuarios.forEach(element => {
                     sessionStorage.setItem("jugador", jugador.usuario);
                     // Si el usuario ya existe, muestra una tabla con su usuario y puntaje
-                    if (element.usuario === jugador.usuario) {
+                    if (element.usuario == jugador.usuario) {
                         mostrartabla(element.usuario, element.puntajeMax, element.mejorTiempo);
                         sleep(3000).then(() => {
                             window.location.href = "juego.html";
