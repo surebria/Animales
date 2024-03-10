@@ -9,10 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/alias_style.css">
     <link rel="shortcut icon" href="img/Extras/logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/d4b8af33ac.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
+    <audio id="sonidoBoton" src="audio/sonido_botones.mp3"></audio>
+    <audio autoplay loop id="miAudio">
+        <source src="audio/musica_fondo.mp3" type="audio/mp3">
+    </audio>
+
+    <button id="botonSonido"><i class="fa-solid fa-volume-high"></i></button>
+    <button id="botoninfo" onclick="window.location.href='index.html';"><i class="fa-solid fa-backward" style="color: #FFD43B;"></i></button>
+    <script src="js/index.js"> </script>
 
     <div class="main-a-container">
         <div class="registro-container">
