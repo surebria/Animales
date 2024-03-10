@@ -41,11 +41,6 @@ var animalesMostrados = () => {
 
 
 //Idea: Agregar un contador para saber cuántas veces ha finalizado el juego exitosamente, que se guarde en el localStorage
-//TODO 1. Añadir que en la segunda ejecución de la función iniciar, se añadan las siguientes tres casas a los lienzos
-//TODO 2. Añadir que en la segunda ejecución de la función iniciar, se añadan los siguientes tres animales a los section de img
-
-//TODO Descomentar todo esto cuando la conexión a localStorage esté lista
-//function asignarImagenesAnimales(animalesMostrados)
 function asignarImagenesAnimales(TresAnimales) { //TODO Modificar aquí cuando sea la segunda ejecución
     var imagenes = document.querySelectorAll('#containerAnimales > img');
 
@@ -163,13 +158,14 @@ function soltado(e, lienzo, canvas) {
         puntaje += Math.round(Math.floor(Math.random() * 1000) / seconds);
         // Se eleva el puntaje
 
+        var audio = new Audio(sonidoNombre);
+        audio.play();
         // Se ejecuta el audio indicando que es el animal correcto
-        var audio = new Audio(canvas.dataset.sonido);
-        audio.play();
+        sleep(2000);
 
-        audio = new Audio(sonidoNombre);
+        audio = new Audio(canvas.dataset.sonido);
         audio.play();
-        // Si no tiene hijos el container significa que arrastro todos los que debía
+         // Si no tiene hijos el container significa que arrastro todos los que debía
         if (document.getElementById('containerAnimales').children.length === 0) {
             console.log('ya no hay hijos');
             if (player.progreso !== 1) {
