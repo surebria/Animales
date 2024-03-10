@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Signika:700,300,600");
 
 body{
-    background-image: url(../img/Extras/fondo_credito.jpg);
+    background-image: url("../img/Extras/fondo_credito.jpg");
     background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;

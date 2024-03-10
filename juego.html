@@ -43,8 +43,13 @@
 
         </div>
 
-        <div class="localList">
-            <script>
+        <div class="localList"></div>
+
+        <script>
+            function actualizarTabla() {
+                if (!localStorage.getItem('usuarios')) {
+                    return;
+                }
                 // Se obtienen los datos del localstorage
                 var datos = JSON.parse(localStorage.getItem('usuarios'));
                 // Se ordenan por puntaje máximo
@@ -56,33 +61,30 @@
                 tabla += "<tr><th colspan='3'>Puntuacion local</th></tr>";
                 tabla += "<tr><th>Nombre de usuario</th><th>Puntaje máximo</th><th>Mejor Tiempo</th></tr>";
                 for (var i = 0; i < 5; i++) {
-                    console.log(datos[i]);
                     if (typeof datos[i] === 'undefined') {
                         break;
                     }
                     tabla += '<tr>';
                     tabla += '<td>' + datos[i]['usuario'] + '</td>';
                     tabla += '<td>' + datos[i]['puntajeMax'] + '</td>';
-                    tabla += '<td>' + datos[i]['mejorTiempo'] + '</td>';
+                    tabla += '<td>' + datos[i]['mejorTiempo'] + ' segundos</td>';
                     tabla += '</tr>';
                 }
                 tabla += '</table>';
                 document.querySelector('.localList').innerHTML = tabla;
-            </script>
-        </div>
+            }
+
+            // Actualizar la tabla cada segundo (1000 milisegundos)
+            setInterval(actualizarTabla, 1000);
+        </script>
+
     </div>
 
 
     <div id="containerAnimales">
-        <section id="animal1">
-            <img id="imagen1" src="" alt="Animal 1">
-        </section>
-        <section id="animal2">
-            <img id="imagen2" src="" alt="Animal 2">
-        </section>
-        <section id="animal3">
-            <img id="imagen3" src="" alt="Animal 3">
-        </section>
+        <img id="imagen1" src="" alt="Animal 1">
+        <img id="imagen2" src="" alt="Animal 2">
+        <img id="imagen3" src="" alt="Animal 3">
     </div>
 
     <div class="container">

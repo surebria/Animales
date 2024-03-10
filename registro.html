@@ -7,6 +7,7 @@
     <title>La granja:Registro</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d4b8af33ac.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/alias_style.css">
     <link rel="shortcut icon" href="img/Extras/logo.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/d4b8af33ac.js" crossorigin="anonymous"></script>
@@ -36,7 +37,15 @@
     <div id="tabla"></div>
 
     <script>
+        // Función para esperar un tiempo determinado
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+
         function guardarDatos() {
+            document.getElementById("boton").disabled = true;
+            // Se deshabilita para evitar guardar doble
             // Limpia los datos guardados en sessionStorage
             // Por si llegase a jugar otro usuario
             sessionStorage.clear();
@@ -47,6 +56,7 @@
                 mejorTiempo: 0,
                 puntajeMax: 0,
                 progreso: 0
+                
             };
             // Verifica si hay datos guardados previamente en localStorage
             var usuarios = localStorage.getItem("usuarios");
@@ -56,15 +66,18 @@
                 usuarios.forEach(element => {
                     sessionStorage.setItem("jugador", jugador.usuario);
                     // Si el usuario ya existe, muestra una tabla con su usuario y puntaje
-                    if(element.usuario == jugador.usuario){
-                        mostrartabla(element.usuario,element.puntajeMax,element.mejorTiempo);
-                        sleep(1000);
-                        // window.location.href = "juego.html";
-                    }else{
+                    if (element.usuario == jugador.usuario) {
+                        mostrartabla(element.usuario, element.puntajeMax, element.mejorTiempo);
+                        sleep(3000).then(() => {
+                            window.location.href = "juego.html";
+                        });
+                    } else {
                         // Si no existe, lo agrega al array
                         usuarios.push(jugador);
                         // Guarda el array actualizado en localStorage
                         localStorage.setItem("usuarios", JSON.stringify(usuarios));
+                        window.location.href = "juego.html";
+
                     }
                 });
             } else {
@@ -76,9 +89,8 @@
                 // Guarda el array actualizado en localStorage con el identificador único
                 localStorage.setItem("usuarios", JSON.stringify(usuarios));
                 sessionStorage.setItem("jugador", jugador.usuario);
+                window.location.href = "juego.html";
             }
-            window.location.href = "juego.html";
-
         }
 
         function mostrartabla(jugador, puntaje, tiempo) {
@@ -100,11 +112,33 @@
 
             tablaDiv.innerHTML = tablaHTML;
 
-            document.getElementById("boton").addEventListener("click", async function() {
-            window.location.href = "juego.html";
+            document.getElementById("boton").addEventListener("click", async function () {
+                window.location.href = "juego.html";
             });
         }
 
+    </script>
+
+    <button id="botonSonido"><i class="fa-solid fa-volume-high"></i></button>
+    <audio src="audio/alias_music.mp3" autoplay loop></audio>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let botonSonido = document.getElementById("botonSonido");
+            let audio = document.querySelector("audio");
+            botonSonido.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                    botonSonido.innerHTML = "<i class='fa-solid fa-volume-high'></i>";
+                    botonSonido.style.backgroundColor = "hsl(245, 98%, 77%)";
+                } else {
+                    audio.pause();
+                    botonSonido.innerHTML = "<i class='fa-solid fa-volume-xmark'></i>";
+                    botonSonido.style.backgroundColor = "hsl(0, 90%, 67%)";
+                }
+            });
+        });
     </script>
 </body>
 

@@ -1,5 +1,9 @@
 @import url("../node_modules/animate.css/animate.css");
-@import url("https://fonts.googleapis.com/css?family=Signika:700,300,600");
+
+@font-face {
+  font-family: 'Signika';
+  src: url("../fonts/Signika/Signika-Regular.ttf");
+}
 
 
 p {
@@ -114,9 +118,10 @@ h1 span:nth-child(11) {
 }
 
 /* Botones */
-.buttons{
+.buttons {
   margin-top: 5%;
 }
+
 a {
   text-decoration: none;
   color: white;
@@ -176,6 +181,7 @@ button {
   padding: 1em 2em;
   font-size: 23px;
 }
+
 button#botonSonido,
 button#botoninfo {
   position: absolute;

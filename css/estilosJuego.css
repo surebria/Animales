@@ -1,4 +1,25 @@
-@import url("https://fonts.googleapis.com/css?family=Signika:700,300,600");
+@font-face {
+    font-family: 'Signika';
+    src: url("../fonts/Signika/Signika-Regular.ttf");
+}
+
+body {
+    color: var(--letra);
+    font-family: 'CustomFont', Courier, monospace;
+    background-image: url("../img/Extras/fondo.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 95vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "Tablas containerAnimales Miscelaneos"
+        "Tablas container Miscelaneos";
+}
+
+
 
 :root{
     --madera: #deb887;
