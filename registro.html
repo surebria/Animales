@@ -20,21 +20,24 @@
             <label for="alias"></label>
             <input type="text" id="alias" />
             <BR></BR>
-            <input type="button" onclick="guardarDatos()" value="Jugar">
+            <input id="boton" type="button" onclick="guardarDatos()" value="Jugar">
         </div>
     </div>
+    <br><br>
+    <div id="tabla"></div>
 
     <script>
         function guardarDatos() {
             // Limpia los datos guardados en sessionStorage
             // Por si llegase a jugar otro usuario
             sessionStorage.clear();
-            // Se genera un nuevo objeto llamado "jugador" con los datos ingresados por el usuario
+            // Se genera un nuevo objeto llamado "jugador" con el nombre ingresado por el usuario y puntaje 0
             var jugador = {
                 usuario: document.getElementById("alias").value,
                 puntaje: 0,
-                puntajeMax: 0,
-                progreso: 0
+                puntajeMax:0,
+                progreso: 0,
+                tiempo:0
             };
             // Verifica si hay datos guardados previamente en localStorage
             var usuarios = localStorage.getItem("usuarios");
@@ -43,9 +46,11 @@
                 usuarios = JSON.parse(usuarios);
                 usuarios.forEach(element => {
                     sessionStorage.setItem("jugador", jugador.usuario);
-                    // Si el usuario ya existe, lo redirige al juego
+                    // Si el usuario ya existe, muestra una tabla con su usuario y puntaje
                     if(element.usuario == jugador.usuario){
-                        window.location.href = "juego.html";
+                        mostrartabla(element.usuario,element.puntajeMax,element.tiempo);
+                        sleep(1000);
+                        // window.location.href = "juego.html";
                     }else{
                         // Si no existe, lo agrega al array
                         usuarios.push(jugador);
@@ -56,7 +61,7 @@
             } else {
                 // Si no hay datos, crea un array vacío
                 usuarios = [];
-    
+
                 // Agrega el nuevo alias al array
                 usuarios.push(jugador);
                 // Guarda el array actualizado en localStorage con el identificador único
@@ -66,6 +71,31 @@
             window.location.href = "juego.html";
 
         }
+
+        function mostrartabla(jugador, puntaje, tiempo) {
+
+            var tablaDiv = document.getElementById("tabla");
+
+            //Tabla que se mostrara
+            var tablaHTML = '<table id="puntos">';
+            tablaHTML += '<thead><tr>';
+            tablaHTML += '<th>Usuario</th>';
+            tablaHTML += '<th>Puntaje</th>';
+            tablaHTML += '<th>Tiempo</th>';
+            tablaHTML += '</tr></thead>';
+            tablaHTML += '<tbody><tr>';
+            tablaHTML += '<td>' + jugador + '</td>';
+            tablaHTML += '<td>' + puntaje + '</td>';
+            tablaHTML += '<td>' + tiempo + '</td>';
+            tablaHTML += '</tr></tbody></table>';
+
+            tablaDiv.innerHTML = tablaHTML;
+
+            document.getElementById("boton").addEventListener("click", async function() {
+            window.location.href = "juego.html";
+            });
+        }
+
     </script>
 </body>
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La granja</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+    <link rel="shortcut icon" href="img/Extras/logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/d4b8af33ac.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-image: url("img/Extras/fondo.png");
+            margin: 0px 150px;
+        }
+        h3{
+            margin-top: 0px;
+            font-family: 'Madimi One', cursive;
+            color: rgb(0, 0, 0);
+            background-color: rgb(209, 255, 195);
+        }
+        .animales{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="sonidoBoton" src="audio/sonido_botones.mp3"></audio>
+    <audio autoplay loop id="miAudio">
+        <source src="audio/musica_fondo.mp3" type="audio/mp3">
+    </audio>
+    <h1>
+        <span>¡</span><span>F</span><span>E</span><span>L</span><span>I</span><span>C</span><span>I</span><span>D</span><span>A</span><span>D</span><span>E</span><span>S</span><span>!</span>
+    </h1>
+    <!-- <img src="img/Extras/logo.png" alt="" class="logo"> -->
+    <h3>¡Bravo, aventurero! Tu habilidad para colocar a los animales en sus hábitats es realmente sorprendente.</h3>
+
+    <div class="buttons">
+        <a class="offset" id="jugar" href="registro.html">Iniciar nuevamente</a>
+    </div>
+    <script src="script.js"></script>
+    <div class="animales">
+        <img src="img/Animales/caballo.png" alt="">
+        <img src="img/Animales/cerdo.png" alt="">
+        <img src="img/Animales/gallina.png" alt="">
+        <img src="img/Animales/pato.png" alt="">
+        <img src="img/Animales/perro.png" alt="">
+        <img src="img/Animales/rana.png" alt="">
+        <img src="img/Animales/vaca.png" alt="">
+        <img src="img/Animales/conejo.png" alt="">
+    </div>
+
+    <button id="botonSonido"><i class="fa-solid fa-volume-high"></i></button>
+    <button id="botoninfo"><i class="fa-solid fa-circle-info"></i></button>
+
+    
+    
+
+
+    <script src="js/index.js"> </script>
+
+</body>
+
+</html>
