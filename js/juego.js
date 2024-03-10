@@ -188,7 +188,7 @@ function soltado(e, lienzo, canvas) {
                 });
                 localStorage.removeItem('usuarios');
                 localStorage.setItem('usuarios', JSON.stringify(usersLocal));
-                sleep(2000).then(() => {
+                sleep(500).then(() => {
                     iniciar();
                     asignarImagenesAnimales(animalesMostrados());
                 });
