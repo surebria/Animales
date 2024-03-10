@@ -28,7 +28,7 @@ table, td, th, tr{
     padding: 15px;
     border: 1px solid rgb(3, 1, 1);
     border-collapse: collapse;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Madimi One', cursive;
 }
 
 #alias{
@@ -36,7 +36,7 @@ table, td, th, tr{
         width: 300px;
         height: 40px;
         font-size: 20px;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-family: 'Madimi One', cursive;
 }
 
 input[type="button"] {
@@ -47,7 +47,7 @@ input[type="button"] {
         color: #ffffff; /*color texto*/
         text-decoration: none; /*decoración texto*/
         text-transform: uppercase; /*capitalización texto*/
-        font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+        font-family: 'Madimi One', cursive;
         border-radius: 50px; /*bordes redondos*/    
         margin-bottom: 30px;
 }

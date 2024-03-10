@@ -1,10 +1,13 @@
+@import url("../node_modules/animate.css/animate.css");
+@import url("https://fonts.googleapis.com/css?family=Signika:700,300,600");
+
 body{
     background-image: url(../img/Extras/fondo_credito.jpg);
     background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
-    
+    font-family: 'Madimi One', cursive;
 }
 
 .text-overlay {
@@ -19,22 +22,36 @@ body{
     align-items: center;
     color: rgb(8, 8, 8);
     text-align: center;
-    font-family: 'Madim One', sans-serif;
+    font-family: 'Madimi One', cursive;
 }
 
+.text-overlay h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.text-overlay p {
+    font-size: 17px;
+    margin: 5px 0; }
+
+.text-overlay .large {
+    font-size: 24px; 
+}
+
+
+  
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-
-    height: 100vh; /* Altura del viewport */
+    height: 100vh; 
 }
 
 canvas {
-    width: 564px; /* Ancho de la imagen */
-    height: 623px; /* Altura de la imagen */
+    width: 700px; 
+    height: 623px; 
 }
 
 .volume-button,
@@ -62,3 +79,86 @@ canvas {
     right: 20px; 
 }
 
+
+h3, h1 span {
+    display: inline-block;
+    animation: bounce 2s infinite;
+  }
+  
+  span:nth-child(4n) {
+    color: hsl(49, 100%, 71%);
+    text-shadow: 1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%),
+      3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%);
+  }
+  
+  span:nth-child(4n-1) {
+    color: hsl(245, 98%, 77%);
+    text-shadow: 1px 1px hsl(238, 35%, 40%), 2px 2px hsl(135, 35%, 45%),
+      3px 3px hsl(135, 35%, 45%), 4px 4px hsl(135, 35%, 45%);
+  }
+  
+  span:nth-child(4n-2) {
+    color: hsl(0, 90%, 67%);
+    text-shadow: 1px 1px hsl(13, 25%, 50%), 2px 2px hsl(155, 25%, 50%),
+      3px 3px hsl(155, 25%, 50%), 4px 4px hsl(140, 25%, 50%);
+  }
+  
+  span:nth-child(4n-3) {
+    color: hsl(38, 100%, 68%);
+    text-shadow: 1px 1px hsl(30, 45%, 50%), 2px 2px hsl(30, 45%, 50%),
+      3px 3px hsl(30, 45%, 50%), 4px 4px hsl(30, 45%, 50%);
+  }
+  
+  h3,h1 span:nth-child(2) {
+    animation-delay: 0.05s;
+  }
+  
+  h3,h1 span:nth-child(3) {
+    animation-delay: 0.1s;
+  }
+  
+  h3,h1 span:nth-child(4) {
+    animation-delay: 0.15s;
+  }
+  
+  h3,h1 span:nth-child(5) {
+    animation-delay: 0.2s;
+  }
+  
+  h3,h1 span:nth-child(6) {
+    animation-delay: 0.25s;
+  }
+  
+  h3,h1 span:nth-child(7) {
+    animation-delay: 0.3s;
+  }
+  
+  h3,h1 span:nth-child(8) {
+    animation-delay: 0.35s;
+  }
+  
+  h3,h1 span:nth-child(9) {
+    animation-delay: 0.4s;
+  }
+  
+  h3,h1 span:nth-child(10) {
+    animation-delay: 0.45s;
+  }
+  
+  h3,h1 span:nth-child(11) {
+    animation-delay: 0.5s;
+  }
+  
+table {
+    border-collapse: collapse; 
+}
+  
+.first-row {
+    border-bottom: 2px solid black; 
+  }
+  
+.text-overlay .tabla-datos td:first-child {
+    border-right: 3px solid #0c0c0c; 
+}
+
+  
