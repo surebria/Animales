@@ -21,15 +21,23 @@ h1{
         /* background-color: rgba(195, 158, 89, 0.927); */
 }
 
+:root{
+        --madera: rgba(222, 173, 132, 0.927);
+        --letra: #68330e;
+}
+
 table, td, th, tr{
     font-size: 23px;
-    /* background-color: rgba(241, 200, 167, 0.715); */
     background-color: #c2cb8c; /*color botón*/
     padding: 15px;
-    border: 1px solid rgb(3, 1, 1);
     border-collapse: collapse;
     font-family: 'Madimi One', cursive;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    background-color: var(--madera);
+    border: 2px solid #643716;
+    border-radius: 15px;
 }
+
 
 #alias{
         padding: 0px 5px;

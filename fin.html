@@ -11,19 +11,38 @@
     <script src="https://kit.fontawesome.com/d4b8af33ac.js" crossorigin="anonymous"></script>
     <style>
         body{
-            background-image: url("img/Extras/fondo.png");
-            margin: 0px 150px;
+            background-image: url("img/Extras/fondo_fin_final.jpeg");
+            /* margin: 0px 150px; */
         }
         h3{
             margin-top: 0px;
             font-family: 'Madimi One', cursive;
             color: rgb(0, 0, 0);
-            background-color: rgb(209, 255, 195);
+            padding: 20px;
+            background-image: url(img/Extras/letrero.png);
+            /* background-color: rgb(209, 255, 195); */
         }
         .animales{
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 0px;
+        }
+        h1{
+            font-size: 50px;
+        }
+        :root{
+        --madera: rgba(253, 160, 84, 0.927);
+        --letra: #c6916b;
+        }
+
+        h3{
+            font-size: 23px;
+            padding: 15px;
+            font-family: 'Madimi One', cursive;
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+            background-color: var(--madera);
+            border: 2px solid #643716;
+            border-radius: 15px;
         }
     </style>
 </head>
@@ -36,30 +55,17 @@
     <h1>
         <span>¡</span><span>F</span><span>E</span><span>L</span><span>I</span><span>C</span><span>I</span><span>D</span><span>A</span><span>D</span><span>E</span><span>S</span><span>!</span>
     </h1>
-    <!-- <img src="img/Extras/logo.png" alt="" class="logo"> -->
-    <h3>¡Bravo, aventurero! Tu habilidad para colocar a los animales en sus hábitats es realmente sorprendente.</h3>
 
+    <h3>¡Bravo, aventurero! Tu habilidad para colocar a los animales<br> en sus hábitats es realmente sorprendente.</h3>
+    <br><br><br><br><br><br><br><br>
     <div class="buttons">
-        <a class="offset" id="jugar" href="registro.html">Iniciar nuevamente</a>
+        <a class="offset" id="jugar" href="juego.html">Volver a jugar <i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i></a>
     </div>
     <script src="script.js"></script>
-    <div class="animales">
-        <img src="img/Animales/caballo.png" alt="">
-        <img src="img/Animales/cerdo.png" alt="">
-        <img src="img/Animales/gallina.png" alt="">
-        <img src="img/Animales/pato.png" alt="">
-        <img src="img/Animales/perro.png" alt="">
-        <img src="img/Animales/rana.png" alt="">
-        <img src="img/Animales/vaca.png" alt="">
-        <img src="img/Animales/conejo.png" alt="">
-    </div>
+    
 
     <button id="botonSonido"><i class="fa-solid fa-volume-high"></i></button>
-    <button id="botoninfo"><i class="fa-solid fa-circle-info"></i></button>
-
-    
-    
-
+    <button id="botoninfo" onclick="window.location.href='creditos.html';"><i class="fa-solid fa-circle-info"></i></button>
 
     <script src="js/index.js"> </script>
 
