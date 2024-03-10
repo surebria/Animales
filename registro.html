@@ -68,6 +68,7 @@
                         // Si no existe, lo agrega al array
                         usuarios.push(jugador);
                         // Guarda el array actualizado en localStorage
+                        localStorage.removeItem("usuarios");
                         localStorage.setItem("usuarios", JSON.stringify(usuarios));
                         window.location.href = "juego.html";
 
