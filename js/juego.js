@@ -1,15 +1,15 @@
 
 const arrayObjetos = [
-    { animal: 'img/Animales/caballo.png', casa: 'img/casas/casa_caballo.png', sonido: "audio/caballo.mp3" },
-    { animal: 'img/Animales/cerdo.png', casa: 'img/casas/casa_cerdo.png', sonido: "audio/cerdo.mp3" },
-    { animal: 'img/Animales/conejo.png', casa: 'img/casas/casa_conejo.png', sonido: "audio/conejo.mp3" },
-    { animal: 'img/Animales/gallina.png', casa: 'img/casas/casa_gallina.png', sonido: "audio/gallina.mp3" },
-    { animal: 'img/Animales/pajaro.png', casa: 'img/casas/casa_pajaro.png', sonido: "audio/pajaro.mp3" },
-    { animal: 'img/Animales/pato.png', casa: 'img/casas/casa_pato.png', sonido: "audio/pato.mp3" },
-    { animal: 'img/Animales/perro.png', casa: 'img/casas/casa_perro.png', sonido: "audio/perro.mp3" },
-    { animal: 'img/Animales/pez.png', casa: 'img/casas/casa_pez.png', sonido: "audio/pez.mp3" },
-    { animal: 'img/Animales/rana.png', casa: 'img/casas/casa_rana.png', sonido: "audio/rana.mp3" },
-    { animal: 'img/Animales/vaca.png', casa: 'img/casas/casa_vaca.png', sonido: "audio/vaca.mp3" }
+    { nombre: "Caballo", animal: 'img/Animales/caballo.png', casa: 'img/casas/casa_caballo.png', sonido: "audio/caballo.mp3", sonidoNombre: "audio/nombreCaballo.mp3" },
+    { nombre: "Cerdo", animal: 'img/Animales/cerdo.png', casa: 'img/casas/casa_cerdo.png', sonido: "audio/cerdo.mp3", sonidoNombre: "audio/nombreCerdo.mp3" },
+    { nombre: "Conejo", animal: 'img/Animales/conejo.png', casa: 'img/casas/casa_conejo.png', sonido: "audio/conejo.mp3", sonidoNombre: "audio/nombreConejo.mp3" },
+    { nombre: "Gallina", animal: 'img/Animales/gallina.png', casa: 'img/casas/casa_gallina.png', sonido: "audio/gallina.mp3", sonidoNombre: "audio/nombreGallina.mp3" },
+    { nombre: "Pajaro", animal: 'img/Animales/pajaro.png', casa: 'img/casas/casa_pajaro.png', sonido: "audio/pajaro.mp3", sonidoNombre: "audio/nombrePajaro.mp3" },
+    { nombre: "Pato", animal: 'img/Animales/pato.png', casa: 'img/casas/casa_pato.png', sonido: "audio/pato.mp3", sonidoNombre: "audio/nombrePato.mp3" },
+    { nombre: "Perro", animal: 'img/Animales/perro.png', casa: 'img/casas/casa_perro.png', sonido: "audio/perro.mp3", sonidoNombre: "audio/nombrePerro.mp3" },
+    { nombre: "Pez", animal: 'img/Animales/pez.png', casa: 'img/casas/casa_pez.png', sonido: "audio/pez.mp3", sonidoNombre: "audio/nombrePez.mp3" },
+    { nombre: "Rana", animal: 'img/Animales/rana.png', casa: 'img/casas/casa_rana.png', sonido: "audio/rana.mp3", sonidoNombre: "audio/nombreRana.mp3" },
+    { nombre: "Vaca", animal: 'img/Animales/vaca.png', casa: 'img/casas/casa_vaca.png', sonido: "audio/vaca.mp3", sonidoNombre: "audio/nombreVaca.mp3" }
 ];
 let puntaje = 0;
 let seconds = 0;
@@ -65,8 +65,10 @@ function iniciar() {
     }
     var fondosSonidos = shuffleArray(animalesMostrados().map(objeto => {
         return {
+            nombre: objeto.nombre,
             casa: objeto.casa,
-            sonido: objeto.sonido
+            sonido: objeto.sonido,
+            sonidoNombre: objeto.sonidoNombre
         };
     }));
 
@@ -80,6 +82,8 @@ function iniciar() {
         fondo.src = fondosSonidos[index].casa;
         canvas.dataset.casa = fondosSonidos[index].casa;
         canvas.dataset.sonido = fondosSonidos[index].sonido;
+        canvas.dataset.sonidoNombre = fondosSonidos[index].sonidoNombre;
+        canvas.dataset.Nombre = fondosSonidos[index].nombre;
 
         fondo.onload = () => {
             lienzo.drawImage(fondo, 0, 0, canvas.width, canvas.height);
@@ -132,18 +136,27 @@ function arrastrado(e) {
 
 function soltado(e, lienzo, canvas) {
     e.preventDefault();
-    var id = e.dataTransfer.getData('Text');
-    var elemento = document.getElementById(id);
-    var casaAnimal = elemento.dataset.casa;
-    var casaCanvas = canvas.dataset.casa;
-    var divPuntaje = document.getElementById('puntaje');
+    let id = e.dataTransfer.getData('Text');
+    let elemento = document.getElementById(id);
+    let casaAnimal = elemento.dataset.casa;
+    let casaCanvas = canvas.dataset.casa;
+    let nombreAnimal = canvas.dataset.Nombre;
+    let sonidoNombre = canvas.dataset.sonidoNombre;
 
+    let divPuntaje = document.getElementById('puntaje');
 
     if (casaAnimal === casaCanvas) {
         // El animal se arrastró a la casa correcta
         // Se elimina del div padre para dejarlo sin hijos
-        // Jaja, sin hijos, se quedo sin webos
         lienzo.drawImage(elemento, 110, 40, 100, 100);
+
+        lienzo.font = '50px Comic Sans MS';
+        lienzo.fillStyle = 'white'; // Cambia el color del texto a blanco
+        lienzo.strokeStyle = 'black'; // Cambia el color del contorno a negro
+        lienzo.lineWidth = 5;
+        lienzo.strokeText(nombreAnimal, 80, 140);
+        lienzo.fillText(nombreAnimal, 80, 140); // Añade el texto en blanco
+        
 
         elemento.remove();
         // Se dibuja en el lienzo y se oculta del origen
@@ -154,10 +167,13 @@ function soltado(e, lienzo, canvas) {
         var audio = new Audio(canvas.dataset.sonido);
         audio.play();
 
-
+        audio = new Audio(sonidoNombre);
+        audio.play();
         // Si no tiene hijos el container significa que arrastro todos los que debía
         if (document.getElementById('containerAnimales').children.length === 0) {
+            console.log('ya no hay hijos');
             if (player.progreso !== 1) {
+                console.log('progreso 0 o 2');
                 usersLocal.forEach(jugador => {
                     // Busca al jugador actual y le asigna el progreso 1
                     if (jugador.usuario == player.usuario) {
@@ -179,6 +195,7 @@ function soltado(e, lienzo, canvas) {
                     asignarImagenesAnimales(animalesMostrados());
                 });
             } else {
+                console.log('progreso 1');
                 usersLocal.forEach(jugador => {
                     // Busca al jugador actual y le asigna el progreso 1
                     if (jugador.usuario == player.usuario) {

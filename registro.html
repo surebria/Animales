@@ -43,7 +43,7 @@
             // Por si llegase a jugar otro usuario
             sessionStorage.clear();
             // Se genera un nuevo objeto llamado "jugador" con el nombre ingresado por el usuario y puntaje 0
-            var jugador = {
+            let jugador = {
                 usuario: document.getElementById("alias").value,
                 ultPuntaje: 0,
                 mejorTiempo: 0,
@@ -52,14 +52,14 @@
 
             };
             // Verifica si hay datos guardados previamente en localStorage
-            var usuarios = localStorage.getItem("usuarios");
+            let usuarios = localStorage.getItem("usuarios");
             // Si hay datos, los convierte en un array
             if (usuarios) {
                 usuarios = JSON.parse(usuarios);
                 usuarios.forEach(element => {
                     sessionStorage.setItem("jugador", jugador.usuario);
                     // Si el usuario ya existe, muestra una tabla con su usuario y puntaje
-                    if (element.usuario == jugador.usuario) {
+                    if (element.usuario === jugador.usuario) {
                         mostrartabla(element.usuario, element.puntajeMax, element.mejorTiempo);
                         sleep(3000).then(() => {
                             window.location.href = "juego.html";
