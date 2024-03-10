@@ -169,9 +169,8 @@ function soltado(e, lienzo, canvas) {
 
         // Si no tiene hijos el container significa que arrastro todos los que debía
         if (document.getElementById('containerAnimales').children.length === 0) {
-            console.log('ya no hay hijos');
             if (player.progreso !== 1) {
-                console.log('progreso 0 o 2');
+                console.log('Nuevo juego');
                 usersLocal.forEach(jugador => {
                     // Busca al jugador actual y le asigna el progreso 1
                     if (jugador.usuario == player.usuario) {
@@ -194,7 +193,7 @@ function soltado(e, lienzo, canvas) {
                     asignarImagenesAnimales(animalesMostrados());
                 });
             } else {
-                console.log('progreso 1');
+                console.log('Primer nivel completado');
                 usersLocal.forEach(jugador => {
                     // Busca al jugador actual y le asigna el progreso 1
                     if (jugador.usuario == player.usuario) {
@@ -212,33 +211,14 @@ function soltado(e, lienzo, canvas) {
 
                             xhr.onreadystatechange = function () {
                                 if (xhr.readyState === 4 && xhr.status === 200) {
-                                    // Se guarda el puntaje y el tiempo para mandarlos a la base de datos
-                                    localStorage.removeItem('usuarios');
-                                    localStorage.setItem('usuarios', JSON.stringify(usersLocal));
-                                    console.log('Puntaje subido a la base de datos');
-                                    sleep(2000).then(() => {
-                                        clearInterval(timerInterval);
-                                        window.location.href = "fin.html";
-                                        // Despues de 2 segundos se llama a fin
-                                    });
-                                }else if(xhr.readyState === 4 && xhr.status === 500){
+                                    console.log('Puntaje subido a la base de datos')
+                                } else if (xhr.readyState === 4 && xhr.status === 500) {
                                     console.log('Error en el servidor');
-                                    localStorage.removeItem('usuarios');
-                                    localStorage.setItem('usuarios', JSON.stringify(usersLocal));
-                                    sleep(2000).then(() => {
-                                        clearInterval(timerInterval);
-                                        window.location.href = "fin.html";
-                                        // Despues de 2 segundos se llama a fin
-                                    });
-                                }else if(xhr.readyState === 4 && xhr.status === 404){
+
+                                } else if (xhr.readyState === 4 && xhr.status === 404) {
                                     console.log('Error en la ruta');
-                                    localStorage.removeItem('usuarios');
-                                    localStorage.setItem('usuarios', JSON.stringify(usersLocal));
-                                    sleep(2000).then(() => {
-                                        clearInterval(timerInterval);
-                                        window.location.href = "fin.html";
-                                        // Despues de 2 segundos se llama a fin
-                                    });
+                                } else if (xhr.readyState === 4 && xhr.status === 403) {
+                                    console.log('Error en la ruta');
                                 }
                             };
 
@@ -247,8 +227,14 @@ function soltado(e, lienzo, canvas) {
                                 Maximo_puntaje: jugador.puntajeMax
                             };
                             xhr.send(JSON.stringify(data));
-
                         }
+                        localStorage.removeItem('usuarios');
+                        localStorage.setItem('usuarios', JSON.stringify(usersLocal));
+                        sleep(2000).then(() => {
+                            clearInterval(timerInterval);
+                            window.location.href = "fin.html";
+                            // Despues de 2 segundos se llama a fin
+                        });
 
                     }
                 });
