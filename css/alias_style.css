@@ -1,5 +1,5 @@
 body {
-        background-image: url("../img/casas/alias_granja.png");
+        background-image: url("../img/Extras/alias_granja.png");
         background-size: cover;
         font-family: 'Madimi One', cursive;
         display: flex;
@@ -21,21 +21,25 @@ h1 {
         /* background-color: rgba(195, 158, 89, 0.927); */
 }
 
-:root{
+:root {
         --madera: rgba(222, 173, 132, 0.927);
         --letra: #68330e;
 }
 
-table, td, th, tr{
-    font-size: 23px;
-    background-color: #c2cb8c; /*color botón*/
-    padding: 15px;
-    border-collapse: collapse;
-    font-family: 'Madimi One', cursive;
-    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
-    background-color: var(--madera);
-    border: 2px solid #643716;
-    border-radius: 15px;
+table,
+td,
+th,
+tr {
+        font-size: 23px;
+        background-color: #c2cb8c;
+        /*color botón*/
+        padding: 15px;
+        border-collapse: collapse;
+        font-family: 'Madimi One', cursive;
+        background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+        background-color: var(--madera);
+        border: 2px solid #643716;
+        border-radius: 15px;
 }
 
 #alias {
@@ -48,14 +52,21 @@ table, td, th, tr{
 
 input[type="button"] {
         font-size: larger;
-        border: 1px solid #2e518b; /*anchura, estilo y color borde*/
-        padding: 15px; /*espacio alrededor texto*/
-        background-color: #7d8b2e; /*color botón*/
-        color: #ffffff; /*color texto*/
-        text-decoration: none; /*decoración texto*/
-        text-transform: uppercase; /*capitalización texto*/
+        border: 1px solid #2e518b;
+        /*anchura, estilo y color borde*/
+        padding: 15px;
+        /*espacio alrededor texto*/
+        background-color: #7d8b2e;
+        /*color botón*/
+        color: #ffffff;
+        /*color texto*/
+        text-decoration: none;
+        /*decoración texto*/
+        text-transform: uppercase;
+        /*capitalización texto*/
         font-family: 'Madimi One', cursive;
-        border-radius: 50px; /*bordes redondos*/    
+        border-radius: 50px;
+        /*bordes redondos*/
         margin-bottom: 30px;
 }
 
@@ -73,9 +84,10 @@ button {
         margin-top: 2em;
         padding: 1em 2em;
         font-size: 23px;
-      }
-      button#botonSonido,
-      button#botoninfo {
+}
+
+button#botonSonido,
+button#botoninfo {
         position: absolute;
         bottom: 0px;
         background-color: hsl(245, 98%, 77%);
@@ -88,15 +100,14 @@ button {
         font-size: 2em;
         cursor: pointer;
         border-radius: 5px;
-      }
-      
-      /* Boton sonido */
-      button#botonSonido {
-        right: 0px;
-      }
-      
-      /* Boton info */
-      button#botoninfo {
-        left: 0px;
-      }
+}
 
+/* Boton sonido */
+button#botonSonido {
+        right: 0px;
+}
+
+/* Boton info */
+button#botoninfo {
+        left: 0px;
+}

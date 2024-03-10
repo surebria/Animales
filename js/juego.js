@@ -100,7 +100,7 @@ function iniciar() {
                 document.getElementById('containerAnimales').appendChild(document.createElement('img'));
                 document.getElementById('containerAnimales').lastChild.addEventListener('dragstart', arrastrado, false);
                 document.getElementById('containerAnimales').lastChild.addEventListener('dragend', finalizado, false);
-                document.getElementById('containerAnimales').lastChild.setAttribute('id', `imagen${i+1}` );
+                document.getElementById('containerAnimales').lastChild.setAttribute('id', `imagen${i + 1}`);
             }
         }
 
@@ -138,7 +138,7 @@ function soltado(e, lienzo, canvas) {
     var casaCanvas = canvas.dataset.casa;
     var divPuntaje = document.getElementById('puntaje');
 
-    
+
     if (casaAnimal === casaCanvas) {
         // El animal se arrastró a la casa correcta
         // Se elimina del div padre para dejarlo sin hijos
@@ -168,12 +168,16 @@ function soltado(e, lienzo, canvas) {
                         jugador.ultPuntaje = puntaje;
                         if (jugador.puntajeMax < puntaje) {
                             jugador.puntajeMax = puntaje;
+                        } else if (jugador.mejorTiempo < seconds) {
+                            jugador.mejorTiempo = seconds;
                         }
                     }
                 });
                 localStorage.setItem('usuarios', JSON.stringify(usersLocal));
-                iniciar();
-                asignarImagenesAnimales(animalesMostrados());
+                sleep(2000).then(() => {
+                    iniciar();
+                    asignarImagenesAnimales(animalesMostrados());
+                });
             } else {
                 usersLocal.forEach(jugador => {
                     // Busca al jugador actual y le asigna el progreso 1
@@ -182,14 +186,37 @@ function soltado(e, lienzo, canvas) {
                         jugador.progreso = 2;
                         jugador.mejorTiempo = seconds;
                         jugador.ultPuntaje = puntaje;
-                        if (jugador.puntajeMax < puntaje) {
+                        if (jugador.mejorTiempo < seconds) {
+                            jugador.mejorTiempo = seconds;
+                        } else if (jugador.puntajeMax < puntaje) {
                             jugador.puntajeMax = puntaje;
+                            const xhr = new XMLHttpRequest();
+                            xhr.open('POST', 'AJAX/updateTable.php', true);
+                            xhr.setRequestHeader('Content-Type', 'application/json');
+
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    // Se guarda el puntaje y el tiempo para mandarlos a la base de datos
+                                    localStorage.setItem('usuarios', JSON.stringify(usersLocal));
+                                    console.log('Puntaje subido a la base de datos');
+                                    sleep(2000).then(() => {
+                                        clearInterval(timerInterval);
+                                        window.location.href = "fin.html";
+                                        // Despues de 2 segundos se llama a fin
+                                    });
+                                }
+                            };
+
+                            const data = {
+                                Nombre_de_usuario: jugador.usuario,
+                                Maximo_puntaje: jugador.puntajeMax
+                            };
+                            xhr.send(JSON.stringify(data));
+
                         }
+
                     }
                 });
-                localStorage.setItem('usuarios', JSON.stringify(usersLocal));
-                window.location.href = "fin.html";
-
             }
         }
     } else {
@@ -203,6 +230,7 @@ function soltado(e, lienzo, canvas) {
     }
     divPuntaje.innerHTML = puntaje;
 }
+
 function startTimer(timerElement) {
     timerInterval = setInterval(() => {
         seconds++;
@@ -212,6 +240,9 @@ function startTimer(timerElement) {
     }, 1000);
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // Este windows.onload también se hará para las siguientes ejecuciones de la función iniciar
 window.onload = function () {
@@ -221,5 +252,25 @@ window.onload = function () {
     // Iniciar el cronómetro
     timerElement = document.getElementById('timer');
     startTimer(timerElement);
+
+
+    document.getElementById("botonMusica").addEventListener('click', () => {
+        let miAudio = document.getElementById("musicaGameplay");
+        let botonSonido = document.getElementById("botonMusica");
+        if (miAudio.paused) {
+            miAudio.play();
+            botonSonido.innerHTML = "<i class='fa-solid fa-volume-high'></i>";
+            botonSonido.style.backgroundColor = "hsl(245, 98%, 77%)";
+        } else {
+            miAudio.pause();
+            botonSonido.innerHTML = "<i class='fa-solid fa-volume-xmark'></i>";
+            botonSonido.style.backgroundColor = "hsl(0, 90%, 67%)";
+        }
+    });
+
+    document.getElementById("botonFin").addEventListener('click', () => {
+        clearInterval(timerInterval);
+        window.location.href = "index.html";
+    });
 }
 

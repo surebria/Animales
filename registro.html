@@ -15,14 +15,7 @@
 </head>
 
 <body>
-    <audio id="sonidoBoton" src="audio/sonido_botones.mp3"></audio>
-    <audio autoplay loop id="miAudio">
-        <source src="audio/musica_fondo.mp3" type="audio/mp3">
-    </audio>
 
-    <button id="botonSonido"><i class="fa-solid fa-volume-high"></i></button>
-    <button id="botoninfo" onclick="window.location.href='index.html';"><i class="fa-solid fa-backward" style="color: #FFD43B;"></i></button>
-    <script src="js/index.js"> </script>
 
     <div class="main-a-container">
         <div class="registro-container">
@@ -41,7 +34,7 @@
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
-        
+
 
         function guardarDatos() {
             document.getElementById("boton").disabled = true;
@@ -56,7 +49,7 @@
                 mejorTiempo: 0,
                 puntajeMax: 0,
                 progreso: 0
-                
+
             };
             // Verifica si hay datos guardados previamente en localStorage
             var usuarios = localStorage.getItem("usuarios");
@@ -121,9 +114,14 @@
 
     <button id="botonSonido"><i class="fa-solid fa-volume-high"></i></button>
     <audio src="audio/alias_music.mp3" autoplay loop></audio>
+    <audio id="sonidoBoton" src="audio/sonido_botones.mp3"></audio>
 
+
+    <button id="botoninfo" onclick="window.location.href='index.html';"><i class="fa-solid fa-backward"
+            style="color: #FFD43B;"></i></button>
 
     <script>
+        let sonidoBoton = document.getElementById("sonidoBoton");
         document.addEventListener("DOMContentLoaded", () => {
             let botonSonido = document.getElementById("botonSonido");
             let audio = document.querySelector("audio");
@@ -137,6 +135,11 @@
                     botonSonido.innerHTML = "<i class='fa-solid fa-volume-xmark'></i>";
                     botonSonido.style.backgroundColor = "hsl(0, 90%, 67%)";
                 }
+            });
+        });
+        document.querySelectorAll("button").forEach(function (button) {
+            button.addEventListener("click", function () {
+                sonidoBoton.play();
             });
         });
     </script>

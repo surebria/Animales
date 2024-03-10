@@ -21,7 +21,7 @@ body {
 
 
 
-:root{
+:root {
     --madera: #deb887;
     --letra: #68330e;
 }
@@ -103,8 +103,8 @@ section img {
     justify-content: space-between;
 }
 
-.worldList ,
-.localList  {
+.worldList,
+.localList {
     width: fit-content;
     border-collapse: collapse;
     background-color: var(--madera);
@@ -150,23 +150,34 @@ button {
     margin-top: 2em;
     padding: 1em 2em;
     font-size: 23px;
-  }
+}
 
-button#botonfin {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 60px;
+button#botonFin {
     position: absolute;
-    bottom: 0px;
     background-color: hsl(245, 98%, 77%);
     color: hsl(49, 100%, 71%);
     border: none;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 2em;
     cursor: pointer;
     border-radius: 5px;
-    right: 35px;
-    bottom: 15px;
-  }
+    right: 1em;
+    bottom: 0.5em;
+}
+
+button#botonMusica{
+    position: absolute;
+    background-color: hsl(245, 98%, 77%);
+    color: hsl(49, 100%, 71%);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2em;
+    cursor: pointer;
+    border-radius: 5px;
+    right: 6em;
+    bottom: 0.5em;
+}
