@@ -50,6 +50,12 @@
             text-shadow: none;
             font-size: 25px;
         }
+
+        #jugar{
+            /* bottom: 0px; */
+            background-color: hsla(245, 47%, 51%, 0.929);
+        }
+
     </style>
 </head>
 
@@ -63,7 +69,7 @@
     </h1>
 
     <h3>¡Bravo <span id="nombreJugador"></span>!, Tu habilidad para colocar a los animales<br> en sus hábitats es realmente sorprendente.</h3>
-    <br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
     <div id="nombreJugador"></div>
     <script>
         const nombreJugador = new URLSearchParams(window.location.search).get('jugador');
