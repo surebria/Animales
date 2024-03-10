@@ -134,8 +134,6 @@ function soltado(e, lienzo, canvas) {
     e.preventDefault();
     var id = e.dataTransfer.getData('Text');
     var elemento = document.getElementById(id);
-    var posX = e.pageX - canvas.offsetLeft;
-    var posY = e.pageY - canvas.offsetTop;
     var casaAnimal = elemento.dataset.casa;
     var casaCanvas = canvas.dataset.casa;
     var divPuntaje = document.getElementById('puntaje');
@@ -144,7 +142,7 @@ function soltado(e, lienzo, canvas) {
         // El animal se arrastró a la casa correcta
         // Se elimina del div padre para dejarlo sin hijos
         // Jaja, sin hijos, se quedo sin webos
-        lienzo.drawImage(elemento, posX, posY, 100, 100);
+        lienzo.drawImage(elemento, 110, 40, 100, 100);
 
         elemento.remove();
         // Se dibuja en el lienzo y se oculta del origen
