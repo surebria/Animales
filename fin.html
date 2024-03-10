@@ -73,7 +73,7 @@
     <div id="nombreJugador"></div>
     <script>
         const nombreJugador = new URLSearchParams(window.location.search).get('jugador');
-        document.getElementById('nombreJugador').textContent = nombreJugador ? `${decodeURIComponent(nombreJugador)}` : '¡Nombre de jugador no encontrado';
+        document.getElementById('nombreJugador').textContent = nombreJugador ? `${decodeURIComponent(nombreJugador)}` : 'Nombre de jugador no encontrado';
         </script>
     <div class="buttons">
         <a class="offset" id="jugar" href="juego.html">Volver a jugar <i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i></a>
