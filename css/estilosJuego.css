@@ -1,14 +1,116 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1000px; /* Ajusta este valor para cambiar la separación entre los canvas y las imágenes */
+@import url("https://fonts.googleapis.com/css?family=Signika:700,300,600");
+
+:root{
+    --madera: #deb887;
+    --letra: #68330e;
 }
+
+body {
+    color: var(--letra);
+    font-family: 'Signika', Courier, monospace;
+    background-image: url("../img/Extras/fondo.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 95vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "Tablas containerAnimales Miscelaneos"
+        "Tablas container Miscelaneos";
+}
+
+.miscelaneos {
+    grid-area: Miscelaneos;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer,
+#puntaje {
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    font-size: 1.5em;
+    margin: 10px 0;
+    background-color: var(--madera);
+    border: 2px solid #8B4513;
+    padding: 1em;
+    border-radius: 15px;
+}
+
+#timer::before {
+    content: "Tiempo: ";
+}
+
+#puntaje::before {
+    content: "Puntaje: ";
+}
+
+.container {
+    grid-area: container;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
 
 #containerAnimales {
+    grid-area: containerAnimales;
     display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+
+}
+
+section img {
+    width: 80%;
+    cursor: pointer;
+}
+
+/* Estilos generales para las tablas */
+.tablas {
+    grid-area: Tablas;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
-section {
-    flex: 1;
+.worldList ,
+.localList  {
+    width: fit-content;
+    border-collapse: collapse;
+    background-color: var(--madera);
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    border: 1px solid var(--letra);
+    border-radius: 15px;
+}
+
+.worldList td,
+.localList td,
+.worldList th,
+.localList th {
+    padding: 8px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las celdas de encabezado de las tablas */
+.worldList th,
+.localList th {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* Estilos para las celdas de encabezado de las tablas */
+.worldList th,
+.localList th {
+    text-align: center;
+    font-weight: bold;
 }
