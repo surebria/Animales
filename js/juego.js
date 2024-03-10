@@ -138,6 +138,7 @@ function soltado(e, lienzo, canvas) {
     var casaCanvas = canvas.dataset.casa;
     var divPuntaje = document.getElementById('puntaje');
 
+    
     if (casaAnimal === casaCanvas) {
         // El animal se arrastró a la casa correcta
         // Se elimina del div padre para dejarlo sin hijos
