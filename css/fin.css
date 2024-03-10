@@ -1,0 +1,73 @@
+body {
+    background-image: url("../img/Extras/fondo_fin_final.jpeg");
+    /* margin: 0px 150px; */
+}
+
+h3 {
+    margin-top: 0px;
+    font-family: 'Madimi One', cursive;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    background-image: url("../img/Extras/letrero.png");
+    /* background-color: rgb(209, 255, 195); */
+}
+
+.animales {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+:root {
+    --madera: rgba(253, 160, 84, 0.927);
+    --letra: #c6916b;
+}
+
+h3 {
+    font-size: 23px;
+    padding: 15px;
+    font-family: 'Madimi One', cursive;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    background-color: var(--madera);
+    border: 2px solid #643716;
+    border-radius: 15px;
+}
+
+#nombreJugador {
+    color: #d03a3a;
+    text-shadow: none;
+    font-size: 25px;
+}
+
+#jugar {
+    /* bottom: 0px; */
+    background-color: hsla(245, 47%, 51%, 0.929);
+}
+
+.buttons{
+    display: flex;
+}
+
+.home-button {
+    position: absolute;
+    bottom: 10px;
+    background-color: hsl(245, 98%, 77%);
+    color: hsl(49, 100%, 71%);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.home-button {
+    left: 20px;
+}

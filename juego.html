@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
     <script src="https://kit.fontawesome.com/d4b8af33ac.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/estilosJuego.css">
+    <link rel="stylesheet" href="css/Juego.css">
     <script src="js/juego.js"></script>
     <link rel="shortcut icon" href="img/Extras/logo.png" type="image/x-icon">
 
@@ -104,25 +104,9 @@
         <div id="puntaje">0</div>
     </div>
 
-    <!-- <button id="botonfin" onclick="location.href='fin.html?jugador='+encodeURIComponent(JSON.parse(localStorage.getItem('usuarios'))[0]?.usuario || '');">Salir <i class="fa-solid fa-forward-step" style="color: #FFD43B;"></i></button> -->
 
-    <button id="botonfin" onclick="redirigirConParametro();">Salir <i class="fa-solid fa-forward-step" style="color: #FFD43B;"></i></button>
+    <button id="botonfin">Salir <i class="fa-solid fa-forward-step" style="color: #FFD43B;"></i></button>
 
-    <script>
-    function redirigirConParametro() {
-        // Obtén el arreglo de usuarios desde localStorage
-        var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-        // Verifica si hay al menos un usuario en el arreglo
-        if (usuarios.length > 0) {
-            // Obtén el usuario actual (por ejemplo, el último usuario en el arreglo)
-            var usuarioActual = usuarios[usuarios.length - 1].usuario;
-            // Redirige a la página 'fin.html' con el usuario actual como parámetro
-            window.location.href = 'fin.html?jugador=' + encodeURIComponent(usuarioActual);
-        } else {
-            alert('No hay usuarios en el arreglo almacenado en localStorage.');
-        }
-    }
-    </script>
 
 </body>
 

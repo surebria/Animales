@@ -81,8 +81,6 @@ function iniciar() {
         canvas.dataset.casa = fondosSonidos[index].casa;
         canvas.dataset.sonido = fondosSonidos[index].sonido;
 
-        console.log(canvas);
-
         fondo.onload = () => {
             lienzo.drawImage(fondo, 0, 0, canvas.width, canvas.height);
         }
@@ -102,7 +100,7 @@ function iniciar() {
                 document.getElementById('containerAnimales').appendChild(document.createElement('img'));
                 document.getElementById('containerAnimales').lastChild.addEventListener('dragstart', arrastrado, false);
                 document.getElementById('containerAnimales').lastChild.addEventListener('dragend', finalizado, false);
-                document.getElementById('containerAnimales').lastChild.dataset.casa = fondosSonidos[index].casa;;
+                document.getElementById('containerAnimales').lastChild.setAttribute('id', `imagen${i+1}` );
             }
         }
 
@@ -114,12 +112,10 @@ function iniciar() {
 }
 
 function eventoEnter(e) {
-    console.log("Soy el evento DragEnter");
     e.preventDefault();
 }
 
 function eventoOver(e) {
-    console.log("Soy el evento DragOver");
     e.preventDefault();
 }
 
@@ -138,9 +134,9 @@ function soltado(e, lienzo, canvas) {
     e.preventDefault();
     var id = e.dataTransfer.getData('Text');
     var elemento = document.getElementById(id);
-    var posX = e.pageX;
-    var posY = e.pageY;
-    var casaAnimal = canvas.dataset.casa;
+    var posX = e.pageX - canvas.offsetLeft;
+    var posY = e.pageY - canvas.offsetTop;
+    var casaAnimal = elemento.dataset.casa;
     var casaCanvas = canvas.dataset.casa;
     var divPuntaje = document.getElementById('puntaje');
 
@@ -148,10 +144,9 @@ function soltado(e, lienzo, canvas) {
         // El animal se arrastró a la casa correcta
         // Se elimina del div padre para dejarlo sin hijos
         // Jaja, sin hijos, se quedo sin webos
-        elemento.remove();
-
         lienzo.drawImage(elemento, posX, posY, 100, 100);
 
+        elemento.remove();
         // Se dibuja en el lienzo y se oculta del origen
         puntaje += Math.round(Math.floor(Math.random() * 1000) / seconds);
         // Se eleva el puntaje
@@ -194,6 +189,7 @@ function soltado(e, lienzo, canvas) {
                     }
                 });
                 localStorage.setItem('usuarios', JSON.stringify(usersLocal));
+                window.location.href = "fin.html";
 
             }
         }
