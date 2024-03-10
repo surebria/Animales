@@ -114,3 +114,38 @@ section img {
     text-align: center;
     font-weight: bold;
 }
+
+button {
+    color: var(--color);
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+    border-radius: 15px;
+    cursor: pointer;
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    margin-top: 2em;
+    padding: 1em 2em;
+    font-size: 23px;
+  }
+
+button#botonfin {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 60px;
+    position: absolute;
+    bottom: 0px;
+    background-color: hsl(245, 98%, 77%);
+    color: hsl(49, 100%, 71%);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2em;
+    cursor: pointer;
+    border-radius: 5px;
+    right: 35px;
+    bottom: 15px;
+  }

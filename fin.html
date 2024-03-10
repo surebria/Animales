@@ -44,6 +44,12 @@
             border: 2px solid #643716;
             border-radius: 15px;
         }
+
+        #nombreJugador{
+            color: #d03a3a;
+            text-shadow: none;
+            font-size: 25px;
+        }
     </style>
 </head>
 
@@ -56,8 +62,13 @@
         <span>¡</span><span>F</span><span>E</span><span>L</span><span>I</span><span>C</span><span>I</span><span>D</span><span>A</span><span>D</span><span>E</span><span>S</span><span>!</span>
     </h1>
 
-    <h3>¡Bravo, aventurero! Tu habilidad para colocar a los animales<br> en sus hábitats es realmente sorprendente.</h3>
-    <br><br><br><br><br><br><br><br>
+    <h3>¡Bravo <span id="nombreJugador"></span>!, Tu habilidad para colocar a los animales<br> en sus hábitats es realmente sorprendente.</h3>
+    <br><br><br><br><br><br>
+    <div id="nombreJugador"></div>
+    <script>
+        const nombreJugador = new URLSearchParams(window.location.search).get('jugador');
+        document.getElementById('nombreJugador').textContent = nombreJugador ? `${decodeURIComponent(nombreJugador)}` : '¡Nombre de jugador no encontrado!';
+        </script>
     <div class="buttons">
         <a class="offset" id="jugar" href="juego.html">Volver a jugar <i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i></a>
     </div>
