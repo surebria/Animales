@@ -161,7 +161,7 @@ function soltado(e, lienzo, canvas) {
         var audio = new Audio(sonidoNombre);
         audio.play();
         // Se ejecuta el audio indicando que es el animal correcto
-        sleep(3000).then(() => {
+        sleep(500).then(() => {
             audio = new Audio(canvas.dataset.sonido);
             audio.play();
         });
@@ -188,7 +188,7 @@ function soltado(e, lienzo, canvas) {
                 });
                 localStorage.removeItem('usuarios');
                 localStorage.setItem('usuarios', JSON.stringify(usersLocal));
-                sleep(500).then(() => {
+                sleep(2000).then(() => {
                     iniciar();
                     asignarImagenesAnimales(animalesMostrados());
                 });
